@@ -1,0 +1,30 @@
+{
+    "name": "oxyrealm/aether",
+    "authors": [
+        {
+            "name": "oxyrealm",
+            "email": "hello@oxyrealm.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oxyrealm\\Aether\\": "app/"
+        },
+        "classmap": [
+            "database/migrations/"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+    }
+}
