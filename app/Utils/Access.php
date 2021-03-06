@@ -63,7 +63,7 @@ class Access {
 	/**
 	 * @see \oxygen_vsb_get_user_edit_mode
 	 */
-	public static function get_user_edit_mode( bool $skip_role = false ): mixed {
+	public static function get_user_edit_mode( bool $skip_role = false ) {
 		$user_id           = get_current_user_id();
 		$users_access_list = get_option( "oxygen_vsb_options_users_access_list", [] );
 

@@ -3,28 +3,35 @@
 namespace Oxyrealm\Aether;
 
 use Oxyrealm\Aether\Utils\Access;
+use Oxyrealm\Aether\Utils\Blade;
 
 /**
  * Admin Pages Handler
  */
 class Admin {
+	protected string $capability;
+
+	public const SLUG = 'aether';
+	public static array $setting_tabs = [];
+
 	public function __construct() {
+		$this->capability = 'manage_options';
+
 		if ( Access::can() ) {
 			add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+			add_action( 'admin_menu', [ $this, 'settings_menu' ], 1000 );
 		}
 	}
 
 	public function admin_menu(): void {
 		global $submenu;
 
-		$capability = 'manage_options';
-		$slug       = 'aether';
 
 		$hook = add_menu_page(
 			__( 'Aether', 'aether' ),
 			__( 'Aether', 'aether' ),
-			$capability,
-			$slug,
+			$this->capability,
+			self::SLUG ,
 			[
 				$this,
 				'plugin_page'
@@ -33,9 +40,7 @@ class Admin {
 			// 2
 		);
 
-		if ( current_user_can( $capability ) ) {
-			$submenu[ $slug ][] = [ __( 'Dashboard', 'aether' ), $capability, "admin.php?page={$slug}#/" ];
-		}
+		$submenu[ self::SLUG ][] = [ __( 'Dashboard', 'aether' ), $this->capability, 'admin.php?page='.self::SLUG ];
 
 		add_action( 'load-' . $hook, [ $this, 'init_hooks' ] );
 	}
@@ -69,5 +74,42 @@ class Admin {
 	 */
 	public function plugin_page(): void {
 		echo '<div id="aether-app"></div>';
+	}
+
+	public function settings_menu() {
+		add_submenu_page(
+			self::SLUG,
+			__( 'Settings', 'aether' ),
+			__( 'Settings', 'aether' ),
+			$this->capability,
+			self::SLUG . '_settings',
+			[
+				$this,
+				'settings_page'
+			],
+		);
+	}
+
+	public function settings_page() {
+		$selected_tab = ! empty( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
+
+		array_unshift(self::$setting_tabs, [
+			'id' => 'general',
+			'label' => __( 'General', 'aether' ),
+			'contents' => []
+		]);
+
+		$arr_k = array_keys(
+			array_column(self::$setting_tabs, 'id'), 
+			$selected_tab
+		);
+
+		$blade = Blade::blade();
+		echo $blade->run('layouts.settings', [
+			'tabs' => self::$setting_tabs,
+			'selected_tab' => $selected_tab,
+			'contents' => ! empty( $arr_k ) ? self::$setting_tabs[$arr_k[0]]['contents'] : []
+		]);
+	
 	}
 }

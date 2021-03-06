@@ -10,7 +10,7 @@
  * Author URI:          https://oxyrealm.com
  * Requires at least:   5.5
  * Tested up to:        5.6.2
- * Requires PHP:        8.0
+ * Requires PHP:        7.4
  * Text Domain:         aether
  * Domain Path:         /languages
  *
@@ -34,11 +34,19 @@ define( 'AETHER_ASSETS', AETHER_URL . '/public' );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Oxyrealm\Aether\Assets;
 use Oxyrealm\Aether\Utils\Migration;
+use Oxyrealm\Modules\Sandbox\Sandbox;
 
 final class Aether {
 
-	private array $container = [];
+	private array $container = [
+		'modules' => []
+	];
+
+	private array $modules = [
+		Sandbox::class
+	];
 
 	public function __construct() {
 		register_activation_hook( AETHER_FILE, [ $this, 'activate' ] );
@@ -75,7 +83,12 @@ final class Aether {
 	public function deactivate(): void {
 	}
 
-	public function __get( $prop ): mixed {
+	/**
+	 * 
+	 * @param string $prop 
+	 * @return mixed 
+	 */
+	public function __get( string $prop ) {
 		if ( array_key_exists( $prop, $this->container ) ) {
 			return $this->container[ $prop ];
 		}
@@ -88,13 +101,16 @@ final class Aether {
 	}
 
 	public function init_plugin(): void {
-		add_action( 'init', [ $this, 'localization' ], 100 );
+		$this->register_assets();
 
 		add_action( 'init', [ $this, 'boot' ] );
+		$this->register_modules();
+
 	}
 
 	public function boot(): void {
-		$this->container['assets'] = new Oxyrealm\Aether\Assets();
+		$this->localization();
+
 		$this->container['api'] = new Oxyrealm\Aether\Api();
 
 		if ( $this->is_request( 'admin' ) ) {
@@ -108,16 +124,58 @@ final class Aether {
 		if ( $this->is_request( 'ajax' ) ) {
 			$this->container['ajax'] = new Oxyrealm\Aether\Ajax();
 		}
+
+		foreach ( $this->container['modules'] as $module ) {
+			$module->boot();
+		}
+	}
+
+	private function register_assets(): void {
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
+		} else {
+			add_action( 'wp_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
+		}
+	}
+	
+	private function register_modules(): void {
+		foreach ($this->modules as $module) {
+			try {
+				$this->container['modules'][$module] = new $module();
+				$this->container['modules'][$module]->register();
+			} catch (\Throwable $th) {
+				//throw $th;
+			}
+		}
 	}
 
 	private function is_request( string $type ): bool {
-		return match( $type ) {
-			'admin' => is_admin(),
-			'ajax' => defined( 'DOING_AJAX' ),
-			'rest' => defined( 'REST_REQUEST' ),
-			'cron' => defined( 'DOING_CRON' ),
-			'frontend' => ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ),
-		};
+		// return match( $type ) {
+		// 	'admin' => is_admin(),
+		// 	'ajax' => defined( 'DOING_AJAX' ),
+		// 	'rest' => defined( 'REST_REQUEST' ),
+		// 	'cron' => defined( 'DOING_CRON' ),
+		// 	'frontend' => ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ),
+		// };
+
+		/**
+		 * @version php7.4
+		 */
+		switch ( $type ) {
+			case 'admin':
+				return is_admin();
+			case 'ajax':
+				return defined( 'DOING_AJAX' );
+			case 'rest':
+				return defined( 'REST_REQUEST' );
+			case 'cron':
+				return defined( 'DOING_CRON' );
+			case 'frontend':
+				return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
+			default:
+				return false;
+				break;
+		}
 	}
 
 	/**
