@@ -31,6 +31,7 @@ class Sandbox extends ModuleAbstract {
         'ct_style_folders',
         'ct_style_sets',
         'ct_style_sheets',
+        'ct_svg_sets',
         'oxygen_vsb_comments_list_templates',
         'oxygen_vsb_easy_posts_templates',
         'oxygen_vsb_element_presets',
@@ -43,11 +44,12 @@ class Sandbox extends ModuleAbstract {
     protected $secret;
 
     public function __construct() {
+        $this->secret = get_option( "{$this->module_id}_secret" );
+
         $this->admin_settings();
 
         parent::__construct();
 
-        $this->secret = get_option( "{$this->module_id}_secret" );
         $this->active = $this->is_active();
     }
 
@@ -63,15 +65,19 @@ class Sandbox extends ModuleAbstract {
         }
         wp_enqueue_style( "{$this->module_id}-admin" );
 
-
         foreach ( $this->options as $option ) {
             add_filter( "pre_option_{$option}", [ $this, 'pre_get_option' ], 0, 3 );
             add_filter( "pre_update_option_{$option}", [ $this, 'pre_update_option' ], 0, 3 );
         }
-        
+
         add_filter( 'get_post_metadata', [ $this, 'get_post_metadata' ], 0, 4 );
         add_filter( 'update_post_metadata', [ $this, 'update_post_metadata' ], 0, 5 );
         add_filter( 'delete_post_metadata', [ $this, 'delete_post_metadata' ], 0, 5 );
+
+        add_filter( "pre_update_option_{$this->module_id}_enabled", function( $value, $old_value, string $option ) {
+            $this->set_secret();
+            return $value;
+        }, 0, 3 );
 
         add_action( 'admin_bar_menu', [ $this, 'admin_bar_node' ], 100 );
     }
@@ -89,7 +95,7 @@ class Sandbox extends ModuleAbstract {
         if ( $secret && $secret === $this->secret ) {
             $this->set_cookie();
         }
-
+        
         return false;
     }
 
@@ -217,6 +223,8 @@ class Sandbox extends ModuleAbstract {
     }
 
     public function admin_settings() {
+        add_action('admin_init', [ $this, 'module_setting_init' ] );
+
         Admin::$setting_tabs[] = [
             'id' => 'sandbox',
             'label' => 'Sandbox',
@@ -231,7 +239,18 @@ class Sandbox extends ModuleAbstract {
 
     public function admin_page() {
         $blade = Blade::blade();
+        
+        echo $blade->run('modules.sandbox.settings', [
+            'module_id' => $this->module_id,
+            'secret' => $this->secret,
+        ]);
+    }
 
-        echo $blade->run('layouts.sample');
+    public function module_setting_init() {
+        register_setting( $this->module_id, "{$this->module_id}_enabled", [
+            'type' => 'boolean',
+            'default' => false
+        ]);
+
     }
 }
