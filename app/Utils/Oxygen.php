@@ -2,7 +2,7 @@
 
 namespace Oxyrealm\Aether\Utils;
 
-class Access {
+class Oxygen {
 
 	/**
 	 * @see \oxygen_vsb_current_user_can_access

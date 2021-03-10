@@ -9,13 +9,11 @@
     "type": "project",
     "require": {
         "php": "^7.4|^8.0",
-        "catfan/medoo": "^1.7",
-        "eftec/bladeone": "^3.51"
+        "catfan/medoo": "^1.7"
     },
     "autoload": {
         "psr-4": {
-            "Oxyrealm\\Aether\\": "app/",
-            "Oxyrealm\\Modules\\": "modules/"
+            "Oxyrealm\\Aether\\": "app/"
         },
         "classmap": [
             "database/migrations/"

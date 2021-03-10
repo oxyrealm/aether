@@ -3,10 +3,10 @@
 namespace Oxyrealm\Aether\Utils;
 
 class Migration {
-	public static function migrate( $currentDatabaseVersion, $newDatabaseVersion ): void {
+	public static function migrate( $migrationPath, $migrationNamespace, $currentDatabaseVersion, $newDatabaseVersion ): void {
 		$regExFileName = '/(\d{4})_(\d{2})_(\d{2})_(\d{6})_(.*?)_(.*?)\.php/';
 
-		foreach ( glob( AETHER_MIGRATION_PATH . '*.php' ) as $fileName ) {
+		foreach ( glob( $migrationPath . '*.php' ) as $fileName ) {
 			if ( preg_match( $regExFileName, basename( $fileName ), $match ) ) {
 				$fileBasename  = $match[0];
 				$fileDateYear  = $match[1];
@@ -18,7 +18,7 @@ class Migration {
 
 				if ( intval( $fileVersion ) <= intval( $newDatabaseVersion ) && intval( $fileVersion ) > intval( $currentDatabaseVersion ) ) {
 					$className = self::camelize( $fileName );
-					call_user_func( [ "\\Oxyrealm\\Aether\\Database\\Migrations\\{$className}", 'up' ] );
+					call_user_func( [ "{$migrationNamespace}\\{$className}", 'up' ] );
 				}
 			}
 		}

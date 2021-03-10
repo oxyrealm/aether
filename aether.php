@@ -36,16 +36,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Oxyrealm\Aether\Assets;
 use Oxyrealm\Aether\Utils\Migration;
-use Oxyrealm\Modules\Sandbox\Sandbox;
 
 final class Aether {
 
 	private array $container = [
 		'modules' => []
-	];
-
-	private array $modules = [
-		Sandbox::class
 	];
 
 	public function __construct() {
@@ -73,7 +68,7 @@ final class Aether {
 		$installed_db_version = get_option( 'aether_db_version' );
 
 		if ( ! $installed_db_version || intval( $installed_db_version ) !== intval( AETHER_DB_VERSION ) ) {
-			Migration::migrate( $installed_db_version ?: 0, AETHER_DB_VERSION );
+			Migration::migrate( AETHER_MIGRATION_PATH, "\\Oxyrealm\\Aether\\Database\\Migrations\\", $installed_db_version ?: 0, AETHER_DB_VERSION );
 			update_option( 'aether_db_version', AETHER_DB_VERSION );
 		}
 
@@ -104,8 +99,6 @@ final class Aether {
 		$this->register_assets();
 
 		add_action( 'init', [ $this, 'boot' ] );
-		$this->register_modules();
-
 	}
 
 	public function boot(): void {
@@ -125,9 +118,6 @@ final class Aether {
 			$this->container['ajax'] = new Oxyrealm\Aether\Ajax();
 		}
 
-		foreach ( $this->container['modules'] as $module ) {
-			$module->boot();
-		}
 	}
 
 	private function register_assets(): void {
@@ -135,17 +125,6 @@ final class Aether {
 			add_action( 'admin_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
 		} else {
 			add_action( 'wp_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
-		}
-	}
-	
-	private function register_modules(): void {
-		foreach ($this->modules as $module) {
-			try {
-				$this->container['modules'][$module] = new $module();
-				$this->container['modules'][$module]->register();
-			} catch (\Throwable $th) {
-				//throw $th;
-			}
 		}
 	}
 
