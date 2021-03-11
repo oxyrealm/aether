@@ -4,6 +4,7 @@ namespace Oxyrealm\Aether\Utils;
 
 use Exception;
 use Medoo\Medoo;
+use wpdb;
 
 /**
  * @method static bool|array select(mixed $table, mixed $join, mixed $columns = null, mixed $where = null)
@@ -78,7 +79,8 @@ class DB {
 	protected function __clone() {
 	}
 
-	public static function wpdb() {
+	public static function wpdb(): wpdb {
+		/** @var wpdb $wpdb */
 		global $wpdb;
 
 		return $wpdb;

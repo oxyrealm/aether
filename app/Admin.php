@@ -2,7 +2,7 @@
 
 namespace Oxyrealm\Aether;
 
-use Oxyrealm\Aether\Utils\Access;
+use Oxyrealm\Aether\Utils\Oxygen;
 use Oxyrealm\Aether\Utils\Blade;
 
 /**
@@ -17,7 +17,7 @@ class Admin {
 	public function __construct() {
 		$this->capability = 'manage_options';
 
-		if ( Access::can() ) {
+		if ( Oxygen::can() ) {
 			add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 			add_action( 'admin_menu', [ $this, 'settings_menu' ], 1000 );
 		}

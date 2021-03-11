@@ -8,8 +8,8 @@
  * Version:             0.0.1
  * Author:              oxyrealm
  * Author URI:          https://oxyrealm.com
- * Requires at least:   5.5
- * Tested up to:        5.6.2
+ * Requires at least:   5.6
+ * Tested up to:        5.7
  * Requires PHP:        7.4
  * Text Domain:         aether
  * Domain Path:         /languages
@@ -39,7 +39,7 @@ use Oxyrealm\Aether\Utils\Migration;
 
 final class Aether {
 
-	private array $container = [
+	public array $container = [
 		'modules' => []
 	];
 
