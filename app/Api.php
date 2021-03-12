@@ -10,11 +10,11 @@ use Oxyrealm\Aether\Api\Example;
  */
 class Api extends WP_REST_Controller {
 
-	public function __construct() {
-		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
-	}
+    public function __construct() {
+        add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+    }
 
-	public function register_routes(): void {
-		( new Example() )->register_routes();
-	}
+    public function register_routes(): void {
+        ( new Example() )->register_routes();
+    }
 }
