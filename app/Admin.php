@@ -19,7 +19,7 @@ class Admin {
 
 		if ( Oxygen::can() ) {
 			add_action( 'admin_menu', [ $this, 'admin_menu' ] );
-			add_action( 'admin_menu', [ $this, 'settings_menu' ], 1000 );
+			// add_action( 'admin_menu', [ $this, 'settings_menu' ], 1000 );
 		}
 	}
 
