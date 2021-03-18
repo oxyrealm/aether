@@ -3,11 +3,7 @@
 namespace Oxyrealm\Aether;
 
 use Oxyrealm\Aether\Utils\Oxygen;
-use Oxyrealm\Aether\Utils\Blade;
 
-/**
- * Admin Pages Handler
- */
 class Admin {
     protected string $capability;
 
@@ -104,12 +100,11 @@ class Admin {
             $selected_tab
         );
 
-        $blade = Blade::blade();
-        echo $blade->run( 'layouts.settings', [
-            'tabs'         => self::$setting_tabs,
-            'selected_tab' => $selected_tab,
-            'contents'     => ! empty( $arr_k ) ? self::$setting_tabs[ $arr_k[0] ]['contents'] : []
-        ] );
-
+        // $blade = Blade::blade();
+        // echo $blade->run( 'layouts.settings', [
+        //     'tabs'         => self::$setting_tabs,
+        //     'selected_tab' => $selected_tab,
+        //     'contents'     => ! empty( $arr_k ) ? self::$setting_tabs[ $arr_k[0] ]['contents'] : []
+        // ] );
     }
 }

@@ -2,9 +2,6 @@
 
 namespace Oxyrealm\Aether;
 
-/**
- * Frontend Pages Handler
- */
 class Frontend {
 
     public function __construct() {

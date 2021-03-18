@@ -5,9 +5,6 @@ namespace Oxyrealm\Aether;
 use WP_REST_Controller;
 use Oxyrealm\Aether\Api\Example;
 
-/**
- * REST_API Handler
- */
 class Api extends WP_REST_Controller {
 
     public function __construct() {
