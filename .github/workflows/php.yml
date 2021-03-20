@@ -34,29 +34,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: vendor.zip
-
-
-
-
-
-
-
-
-
-    steps:
-    - uses: actions/checkout@v1
-    - run: composer install --ansi --no-progress --no-interaction --prefer-dist
-    - uses: montudor/action-zip@v0.1.1
-      with:
-        args: zip -qq -r vendor.zip vendor
-    - uses: actions/upload-artifact@v2
-      with:
-        name: vendor.zip
-
-
-
-
+          name: release.zip
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
