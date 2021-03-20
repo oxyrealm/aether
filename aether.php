@@ -7,7 +7,7 @@
  * Description:         The fifth element for Oxygen Builder.
  * Version:             1.0.0
  * Author:              oxyrealm
- * Author URI:          https://aether.oxyrealm.com
+ * Author URI:          https://oxyrealm.com
  * Requires at least:   5.6
  * Tested up to:        5.7
  * Requires PHP:        7.4
@@ -16,7 +16,7 @@
  *
  * @package             Aether
  * @author              oxyrealm <hello@oxyrealm.com>
- * @link                https://aether.oxyrealm.com
+ * @link                https://oxyrealm.com
  * @since               1.0.0
  * @copyright           2021 oxyrealm
  * @version             1.0.0

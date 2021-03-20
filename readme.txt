@@ -1,6 +1,6 @@
 === Aether ===
 Contributors: oxyrealm
-Donate link: https://aether.oxyrealm.com/donate?utm_source=aether
+Donate link: https://oxyrealm.com/donate?utm_source=aether
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7
@@ -22,17 +22,17 @@ The framework for all Oxyrealm's plugin
 
 For more info about the fifth element for Oxygen Builder, check out the following:
 
-* The [Aether](https://aether.oxyrealm.com/aether?utm_source=aether) official homepage.
+* The [Aether](https://oxyrealm.com/aether?utm_source=aether) official homepage.
 
 
 == Installation ==
 
-Please [read documentation](https://aether.oxyrealm.com/documentation?utm_source=aether) on Aether website for instruction how to install Aether plugin. 
+Please [read documentation](https://oxyrealm.com/documentation?utm_source=aether) on Aether website for instruction how to install Aether plugin. 
 
 
 == Changelog ==
 
-For more information, see [Releases](https://aether.oxyrealm.com/changelog?utm_source=aether).
+For more information, see [Releases](https://oxyrealm.com/changelog?utm_source=aether).
 
 = 1.0.0 =
 
