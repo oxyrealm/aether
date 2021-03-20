@@ -35,6 +35,7 @@ define( 'AETHER_ASSETS', AETHER_URL . '/public' );
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Oxyrealm\Aether\Assets;
+use Oxyrealm\Aether\Utils;
 use Oxyrealm\Aether\Utils\Migration;
 
 final class Aether {
@@ -78,12 +79,6 @@ final class Aether {
     public function deactivate(): void {
     }
 
-    /**
-     *
-     * @param string $prop
-     *
-     * @return mixed
-     */
     public function __get( string $prop ) {
         if ( array_key_exists( $prop, $this->container ) ) {
             return $this->container[ $prop ];
@@ -107,62 +102,20 @@ final class Aether {
 
         $this->container['api'] = new Oxyrealm\Aether\Api();
 
-        if ( $this->is_request( 'admin' ) ) {
-            $this->container['admin'] = new Oxyrealm\Aether\Admin();
-        }
-
-        if ( $this->is_request( 'frontend' ) ) {
-            $this->container['frontend'] = new Oxyrealm\Aether\Frontend();
-        }
-
-        if ( $this->is_request( 'ajax' ) ) {
+        if ( Utils::is_request( 'ajax' ) ) {
             $this->container['ajax'] = new Oxyrealm\Aether\Ajax();
         }
 
     }
 
     private function register_assets(): void {
-        if ( is_admin() ) {
-            add_action( 'admin_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
-        } else {
-            add_action( 'wp_enqueue_scripts', [ Assets::class, 'do_register' ], 5 );
-        }
+        add_action( 
+            Utils::is_request( 'admin' ) ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts',
+            [ Assets::class, 'do_register' ],
+            5
+        );
     }
 
-    private function is_request( string $type ): bool {
-        // return match( $type ) {
-        // 	'admin' => is_admin(),
-        // 	'ajax' => defined( 'DOING_AJAX' ),
-        // 	'rest' => defined( 'REST_REQUEST' ),
-        // 	'cron' => defined( 'DOING_CRON' ),
-        // 	'frontend' => ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ),
-        // };
-
-        /**
-         * @version php7.4
-         */
-        switch ( $type ) {
-            case 'admin':
-                return is_admin();
-            case 'ajax':
-                return defined( 'DOING_AJAX' );
-            case 'rest':
-                return defined( 'REST_REQUEST' );
-            case 'cron':
-                return defined( 'DOING_CRON' );
-            case 'frontend':
-                return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
-            default:
-                return false;
-                break;
-        }
-    }
-
-    /**
-     * Initialize plugin for localization
-     *
-     * @uses load_plugin_textdomain()
-     */
     public function localization(): void {
         load_plugin_textdomain( 'aether', false, dirname( plugin_basename( AETHER_FILE ) ) . '/languages/' );
     }
