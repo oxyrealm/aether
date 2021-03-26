@@ -18,12 +18,8 @@ jobs:
       - name: Create zip
         uses: montudor/action-zip@v0.1.1
         with:
-          args: zip -qq -r release.zip .
+          args: zip -qq -r aether.zip .
 
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     path: release.zip
-# 
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -39,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release.zip
-          asset_name: release.zip
+          asset_path: ./aether.zip
+          asset_name: aether.zip
           asset_content_type: application/zip
