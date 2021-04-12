@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:         Aether
  * Description:         The fifth element for Oxygen Builder.
- * Version:             1.0.3
+ * Version:             1.0.5
  * Author:              oxyrealm
  * Author URI:          https://oxyrealm.com
  * Requires at least:   5.6
@@ -19,12 +19,12 @@
  * @link                https://oxyrealm.com
  * @since               1.0.0
  * @copyright           2021 oxyrealm
- * @version             1.0.3
+ * @version             1.0.5
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AETHER_VERSION', '1.0.3' );
+define( 'AETHER_VERSION', '1.0.5' );
 define( 'AETHER_DB_VERSION', '001' );
 define( 'AETHER_FILE', __FILE__ );
 define( 'AETHER_PATH', dirname( AETHER_FILE ) );
