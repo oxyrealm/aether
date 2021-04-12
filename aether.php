@@ -40,9 +40,7 @@ use Oxyrealm\Aether\Utils\Migration;
 
 final class Aether {
 
-    public array $container = [
-        'modules' => []
-    ];
+    public array $container = [];
 
     public function __construct() {
         register_activation_hook( AETHER_FILE, [ $this, 'activate' ] );
