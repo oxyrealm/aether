@@ -4,7 +4,7 @@ Donate link: https://oxyrealm.com/donate?utm_source=aether
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,13 +14,13 @@ The fifth element for Oxygen Builder.
 
 == Description ==
 
-### Aether: The fifth element for Oxygen Builder.
+### Aether: The framework for Oxyrealm's plugins.
 
 The framework for all Oxyrealm's plugin
 
 ### Further Reading
 
-For more info about the fifth element for Oxygen Builder, check out the following:
+For more info about The framework for Oxyrealm's plugins, check out the following:
 
 * The [Aether](https://oxyrealm.com/aether?utm_source=aether) official homepage.
 
@@ -33,6 +33,12 @@ Please [read documentation](https://oxyrealm.com/documentation?utm_source=aether
 == Changelog ==
 
 For more information, see [Releases](https://oxyrealm.com/changelog?utm_source=aether).
+
+= 1.0.6 =
+
+Release Date: 
+
+* [Composer] Added Depedencies: pusher/pusher-php-server
 
 = 1.0.5 =
 

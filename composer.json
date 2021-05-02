@@ -9,7 +9,8 @@
     "type": "project",
     "require": {
         "php": "^7.4|^8.0",
-        "catfan/medoo": "^1.7"
+        "catfan/medoo": "^1.7",
+        "pusher/pusher-php-server": "^6.1"
     },
     "autoload": {
         "psr-4": {
