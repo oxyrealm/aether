@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:         Aether
  * Description:         The framework for Oxyrealm's plugins.
- * Version:             1.0.7
+ * Version:             1.0.8
  * Author:              oxyrealm
  * Author URI:          https://oxyrealm.com
  * Requires at least:   5.6
@@ -19,12 +19,12 @@
  * @link                https://oxyrealm.com
  * @since               1.0.0
  * @copyright           2021 oxyrealm
- * @version             1.0.7
+ * @version             1.0.8
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AETHER_VERSION', '1.0.7' );
+define( 'AETHER_VERSION', '1.0.8' );
 define( 'AETHER_DB_VERSION', '001' );
 define( 'AETHER_FILE', __FILE__ );
 define( 'AETHER_PATH', dirname( AETHER_FILE ) );
