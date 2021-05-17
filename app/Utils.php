@@ -29,7 +29,21 @@ class Utils {
         return defined( 'SHOW_CT_BUILDER' ) && defined( 'OXYGEN_IFRAME' );
     }
 
+	public static function ltrim( string $string, string $prefix ): string {
+		return strpos( $string, $prefix ) === 0
+			? substr( $string, strlen( $prefix ) )
+			: $string;
+	}
+
     public static function localization($domain, $plugin_file): void {
         load_plugin_textdomain( $domain, false, dirname( plugin_basename( $plugin_file ) ) . '/languages/' );
+    }
+
+    public static function plugin_action_links($links, $setting_page_slug) {
+        $plugin_shortcuts = array(
+            '<a href="'. add_query_arg( [ 'page' => $setting_page_slug ], admin_url( 'admin.php' ) ) .'">Settings</a>',
+            '<a href="https://go.oxyrealm.com/donate" target="_blank" style="color:#3db634;">Buy developer a coffee</a>'
+        );
+        return array_merge($links, $plugin_shortcuts);
     }
 }

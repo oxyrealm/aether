@@ -1,6 +1,6 @@
 === Aether ===
 Contributors: oxyrealm
-Donate link: https://oxyrealm.com/donate?utm_source=aether
+Donate link: https://go.oxyrealm.com/donate
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7.2
@@ -38,7 +38,7 @@ For more information, see [Releases](https://oxyrealm.com/changelog?utm_source=a
 
 Release Date: 
 
-* 
+* Added an admin page.
 
 = 1.0.9 =
 

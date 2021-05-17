@@ -4,7 +4,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:         Aether
- * Description:         The framework for OxyRealm's plugins.
+ * Description:         The backbone and framework for all OxyRealm's plugins.
  * Version:             1.1.0
  * Author:              oxyrealm
  * Author URI:          https://oxyrealm.com
@@ -34,6 +34,7 @@ define( 'AETHER_ASSETS', AETHER_URL . '/public' );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Oxyrealm\Aether\Admin;
 use Oxyrealm\Aether\Assets;
 use Oxyrealm\Aether\Utils;
 use Oxyrealm\Aether\Utils\Migration;
@@ -41,6 +42,10 @@ use Oxyrealm\Aether\Utils\Migration;
 final class Aether {
 
     public function __construct() {
+        add_filter('plugin_action_links_' . plugin_basename( AETHER_FILE ), function($links) {
+            return Utils::plugin_action_links($links, Admin::$slug);
+        } );
+
         register_activation_hook( AETHER_FILE, [ $this, 'activate' ] );
         register_deactivation_hook( AETHER_FILE, [ $this, 'deactivate' ] );
 
@@ -64,15 +69,14 @@ final class Aether {
     }
 
     public function boot(): void {
-        
+		Assets::do_register();
+
+        new \Oxyrealm\Aether\Admin();
     }
 
     private function register_assets(): void {
-        add_action( 
-            Utils::is_request( 'admin' ) ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts',
-            [ Assets::class, 'do_register' ],
-            10
-        );
+        Assets::register_style( "aether-admin-main", AETHER_URL . '/public/css/admin/main.css' );
+		Assets::register_script( "aether-admin-main", AETHER_URL . '/public/js/admin/main.js' );
     }
 
     public function activate(): void {
