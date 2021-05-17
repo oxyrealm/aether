@@ -4,8 +4,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:         Aether
- * Description:         The framework for Oxyrealm's plugins.
- * Version:             1.0.9
+ * Description:         The framework for OxyRealm's plugins.
+ * Version:             1.1.0
  * Author:              oxyrealm
  * Author URI:          https://oxyrealm.com
  * Requires at least:   5.6
@@ -19,12 +19,12 @@
  * @link                https://oxyrealm.com
  * @since               1.0.0
  * @copyright           2021 oxyrealm
- * @version             1.0.9
+ * @version             1.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AETHER_VERSION', '1.0.9' );
+define( 'AETHER_VERSION', '1.1.0' );
 define( 'AETHER_DB_VERSION', '001' );
 define( 'AETHER_FILE', __FILE__ );
 define( 'AETHER_PATH', dirname( AETHER_FILE ) );
@@ -39,8 +39,6 @@ use Oxyrealm\Aether\Utils;
 use Oxyrealm\Aether\Utils\Migration;
 
 final class Aether {
-
-    public array $container = [];
 
     public function __construct() {
         register_activation_hook( AETHER_FILE, [ $this, 'activate' ] );
@@ -59,6 +57,24 @@ final class Aether {
         return $instance;
     }
 
+    public function init_plugin(): void {
+        $this->register_assets();
+
+        add_action( 'init', [ $this, 'boot' ] );
+    }
+
+    public function boot(): void {
+        
+    }
+
+    private function register_assets(): void {
+        add_action( 
+            Utils::is_request( 'admin' ) ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts',
+            [ Assets::class, 'do_register' ],
+            10
+        );
+    }
+
     public function activate(): void {
         if ( ! get_option( 'aether_installed' ) ) {
             update_option( 'aether_installed', time() );
@@ -75,47 +91,6 @@ final class Aether {
     }
 
     public function deactivate(): void {
-    }
-
-    public function __get( string $prop ) {
-        if ( array_key_exists( $prop, $this->container ) ) {
-            return $this->container[ $prop ];
-        }
-
-        return $this->{$prop};
-    }
-
-    public function __isset( $prop ): bool {
-        return isset( $this->{$prop} ) || isset( $this->container[ $prop ] );
-    }
-
-    public function init_plugin(): void {
-        $this->register_assets();
-
-        add_action( 'init', [ $this, 'boot' ] );
-    }
-
-    public function boot(): void {
-        $this->localization();
-
-        $this->container['api'] = new Oxyrealm\Aether\Api();
-
-        if ( Utils::is_request( 'ajax' ) ) {
-            $this->container['ajax'] = new Oxyrealm\Aether\Ajax();
-        }
-
-    }
-
-    private function register_assets(): void {
-        add_action( 
-            Utils::is_request( 'admin' ) ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts',
-            [ Assets::class, 'do_register' ],
-            5
-        );
-    }
-
-    public function localization(): void {
-        load_plugin_textdomain( 'aether', false, dirname( plugin_basename( AETHER_FILE ) ) . '/languages/' );
     }
 }
 

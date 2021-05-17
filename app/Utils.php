@@ -4,17 +4,6 @@ namespace Oxyrealm\Aether;
 
 class Utils {
     public static function is_request( string $type ): bool {
-        // return match( $type ) {
-        // 	'admin' => is_admin(),
-        // 	'ajax' => defined( 'DOING_AJAX' ),
-        // 	'rest' => defined( 'REST_REQUEST' ),
-        // 	'cron' => defined( 'DOING_CRON' ),
-        // 	'frontend' => ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ),
-        // };
-
-        /**
-         * @version php7.4
-         */
         switch ( $type ) {
             case 'admin':
                 return is_admin();
@@ -38,5 +27,9 @@ class Utils {
 
     public static function is_oxygen_iframe(): bool {
         return defined( 'SHOW_CT_BUILDER' ) && defined( 'OXYGEN_IFRAME' );
+    }
+
+    public static function localization($domain, $plugin_file): void {
+        load_plugin_textdomain( $domain, false, dirname( plugin_basename( $plugin_file ) ) . '/languages/' );
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Oxyrealm\Aether;
 
-use Exception;
-
 class Assets {
     private static $styles = [];
     private static $scripts = [];
