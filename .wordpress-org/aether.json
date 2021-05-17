@@ -1,0 +1,82 @@
+[
+    {
+      "title": "From the creator of this plugin",
+      "products": [
+        {
+          "name": "dPlugins Sandbox",
+          "description": "Any change you made to oxygen design will isolated until you published it.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-sandbox.png",
+          "buttonText": "Get dPlugins Sandbox",
+          "buttonLink": "https://wordpress.org/plugins/oxyrealm-sandbox"
+        },
+        {
+          "name": "OxyRealm Collaboration",
+          "description": "Oxygen Editor multi-user or multi-tab editing support.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-collaboration.png",
+          "buttonText": "Get OxyRealm Collaboration",
+          "buttonLink": "https://go.oxyrealm.com/oxyrealm-collaboration"
+        },
+        {
+          "name": "Swiss Knife",
+          "description": "The first plugin you should install when the Oxygen Builder's default is not enough.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/swiss-knife.png",
+          "buttonText": "Get Swiss Knife",
+          "buttonLink": "https://go.oxyrealm.com/swiss-knife"
+        },
+        {
+          "name": "Scripts Organizer",
+          "description": "Advanced Code Editor for WordPress with scheduling features.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/scripts-organizer.png",
+          "buttonText": "Get Scripts Organizer",
+          "buttonLink": "https://go.oxyrealm.com/scripts-organizer"
+        },
+        {
+          "name": "Asura",
+          "description": "License management for selling design sets built with Oxygen Builder.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/asura.png",
+          "buttonText": "Get Asura",
+          "buttonLink": "https://go.oxyrealm.com/asura"
+        },
+        {
+          "name": "dPlugins DevKit",
+          "description": "Handy Developers Plugin for setting up your projects fast.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/dplugins-devkit.png",
+          "buttonText": "Get dPlugins DevKit",
+          "buttonLink": "https://go.oxyrealm.com/dplugins-devkit"
+        },
+        {
+          "name": "Facebook Group",
+          "description": "A community of Oxygen Builder with expert plugin developers, agencies, web designer, hosting providers etc.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/facebook-group.png",
+          "buttonText": "Join Facebook Group",
+          "buttonLink": "https://www.facebook.com/groups/dplugins"
+        }
+      ]
+    },
+    {
+      "title": "The technology stack we use",
+      "products": [
+        {
+          "name": "DigitalOcean",
+          "description": "Most popular WordPress high-performance cloud hosting.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/digitalocean.png",
+          "buttonText": "Get DigitalOcean",
+          "buttonLink": "https://go.oxyrealm.com/digitalocean"
+        },
+        {
+          "name": "Bunny CDN",
+          "description": "Bunny CDN offers a reliable and lightning fast CDN solution with the worlds most cost-effective pricing.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/bunny-cdn.png",
+          "buttonText": "Get Bunny CDN",
+          "buttonLink": "https://go.oxyrealm.com/bunny-cdn"
+        },
+        {
+          "name": "ExpressVPN",
+          "description": "Protect your online privacy with ExpressVPN.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/expressvpn.png",
+          "buttonText": "Get ExpressVPN",
+          "buttonLink": "https://go.oxyrealm.com/expressvpn"
+        }
+      ]
+    }
+  ]
