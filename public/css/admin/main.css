@@ -1,0 +1,15 @@
+.main-grid {
+    display: flex;
+      flex-wrap: wrap;
+ }
+ .main-box {
+    width: 300px;
+    margin: 10px;
+    background: white;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 2px 5px 5px 5px #ececec;
+ }
+ .main-box .main-info {
+    padding: 0px 15px 15px 15px;
+ }
