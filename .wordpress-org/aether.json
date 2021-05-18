@@ -3,18 +3,25 @@
       "title": "From the creator of this plugin",
       "products": [
         {
-          "name": "dPlugins Sandbox",
+          "name": "Sandbox",
           "description": "Any change you made to oxygen design will isolated until you published it.",
           "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-sandbox.png",
-          "buttonText": "Get dPlugins Sandbox",
+          "buttonText": "Get Sandbox",
           "buttonLink": "https://wordpress.org/plugins/oxyrealm-sandbox"
         },
         {
-          "name": "OxyRealm Collaboration",
+          "name": "Collaboration",
           "description": "Oxygen Editor multi-user or multi-tab editing support.",
           "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-collaboration.png",
-          "buttonText": "Get OxyRealm Collaboration",
+          "buttonText": "Get Collaboration",
           "buttonLink": "https://go.oxyrealm.com/oxyrealm-collaboration"
+        },
+        {
+          "name": "Asura",
+          "description": "License management for selling design sets built with Oxygen Builder.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/asura.png",
+          "buttonText": "Get Asura",
+          "buttonLink": "https://go.oxyrealm.com/asura"
         },
         {
           "name": "Swiss Knife",
@@ -31,17 +38,10 @@
           "buttonLink": "https://go.oxyrealm.com/scripts-organizer"
         },
         {
-          "name": "Asura",
-          "description": "License management for selling design sets built with Oxygen Builder.",
-          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/asura.png",
-          "buttonText": "Get Asura",
-          "buttonLink": "https://go.oxyrealm.com/asura"
-        },
-        {
-          "name": "dPlugins DevKit",
+          "name": "DevKit",
           "description": "Handy Developers Plugin for setting up your projects fast.",
           "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/dplugins-devkit.png",
-          "buttonText": "Get dPlugins DevKit",
+          "buttonText": "Get DevKit",
           "buttonLink": "https://go.oxyrealm.com/dplugins-devkit"
         },
         {
