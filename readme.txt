@@ -14,13 +14,13 @@ The fifth element for Oxygen Builder.
 
 == Description ==
 
-### Aether: The framework for OxyRealm's plugins.
+### Aether: The framework for dPlugins's plugins.
 
-The framework for all OxyRealm's plugin
+The framework for all dPlugins's plugin
 
 ### Further Reading
 
-For more info about The framework for OxyRealm's plugins, check out the following:
+For more info about The framework for dPlugins's plugins, check out the following:
 
 * The [Aether](https://go.oxyrealm.com/aether) official homepage.
 
