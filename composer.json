@@ -2,6 +2,7 @@
     "name": "oxyrealm/aether",
     "require": {
         "php": "^7.4|^8.0",
+        "ext-sodium": "*",
         "catfan/medoo": "^2.0",
         "pusher/pusher-php-server": "^7.0"
     },

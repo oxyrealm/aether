@@ -2,21 +2,44 @@
 
 namespace Oxyrealm\Aether\Utils;
 
+use Exception;
+
+/**
+ * @method static void success( $messages, $module_name = false )
+ * @method static void warning( $messages, $module_name = false )
+ * @method static void error( $messages, $module_name = false )
+ * @method static void info( $messages, $module_name = false )
+ * @method static void init()
+ */
 class Notice {
-	const ERROR = 'error';
-	const SUCCESS = 'success';
-	const WARNING = 'warning';
-	const INFO = 'info';
+	private const ERROR = 'error';
+	private const SUCCESS = 'success';
+	private const WARNING = 'warning';
+	private const INFO = 'info';
 
-	protected $module_id;
-	protected $module_name;
+	private static $instances = [];
 
-	public function __construct( $module_id, $module_name ) {
-		$this->module_id   = $module_id;
-		$this->module_name = $module_name;
+	public static function __callStatic( $method, $args ) {
+		return self::getInstance()->{$method}( ...$args );
 	}
 
-	public function init() {
+	public static function getInstance(): Notice {
+		$cls = static::class;
+		if ( ! isset( self::$instances[ $cls ] ) ) {
+			self::$instances[ $cls ] = new static();
+		}
+
+		return self::$instances[ $cls ];
+	}
+
+	public function __wakeup() {
+		throw new Exception( "Cannot unserialize a singleton." );
+	}
+
+	protected function __clone() {
+	}
+
+	private function init() {
 		foreach (
 			[
 				self::ERROR,
@@ -25,35 +48,34 @@ class Notice {
 				self::INFO,
 			] as $level
 		) {
-			$messages = get_transient( "{$this->module_id}_notice_{$level}" );
+			$messages = get_transient( "aether_notice_{$level}" );
 
 			if ( $messages && is_array( $messages ) ) {
 				foreach ( $messages as $message ) {
 					echo sprintf(
-						'<div class="notice notice-%s is-dismissible"><p><b>%s</b>: %s</p></div>',
+						'<div class="notice notice-%s is-dismissible"><p>%s</p></div>',
 						$level,
-						$this->module_name,
 						$message
 					);
 				}
 
-				delete_transient( "{$this->module_id}_notice_{$level}" );
+				delete_transient( "aether_notice_{$level}" );
 			}
 		}
 	}
 
-	public function adds( $level, $messages ) {
+	private function adds( $level, $messages, $module_name = false ) {
 		if ( ! is_array( $messages ) ) {
 			$messages = [ $messages ];
 		}
 
 		foreach ( $messages as $message ) {
-			$this->add( $level, $message );
+			$this->add( $level, ( $module_name ? "<b>{$module_name}</b>: " : '' ) . $message );
 		}
 	}
 
-	public function add( $level, $message, $code = 0, $duration = 60 ) {
-		$messages = get_transient( "{$this->module_id}_notice_{$level}" );
+	private function add( $level, $message, $code = 0, $duration = 60 ) {
+		$messages = get_transient( "aether_notice_{$level}" );
 
 		if ( $messages && is_array( $messages ) ) {
 			if ( ! in_array( $message, $messages ) ) {
@@ -63,22 +85,22 @@ class Notice {
 			$messages = [ $message ];
 		}
 
-		set_transient( "{$this->module_id}_notice_{$level}", $messages, $duration );
+		set_transient( "aether_notice_{$level}", $messages, $duration );
 	}
 
-	public function success( $messages ) {
-		$this->adds( self::SUCCESS, $messages );
+	private function success( $messages, $module_name = false ) {
+		$this->adds( self::SUCCESS, $messages, $module_name );
 	}
 
-	public function warning( $messages ) {
-		$this->adds( self::WARNING, $messages );
+	private function warning( $messages, $module_name = false ) {
+		$this->adds( self::WARNING, $messages, $module_name );
 	}
 
-	public function info( $messages ) {
-		$this->adds( self::INFO, $messages );
+	private function info( $messages, $module_name = false ) {
+		$this->adds( self::INFO, $messages, $module_name );
 	}
 
-	public function error( $messages ) {
-		$this->adds( self::ERROR, $messages );
+	private function error( $messages, $module_name = false ) {
+		$this->adds( self::ERROR, $messages, $module_name );
 	}
 }

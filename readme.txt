@@ -4,7 +4,7 @@ Donate link: https://go.oxyrealm.com/donate
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,6 +17,9 @@ The fifth element for Oxygen Builder.
 ### Aether: The framework for dPlugins's plugins.
 
 The framework for all dPlugins's plugin
+
+Note:
+- Require Sodium PHP Extension enabled
 
 ### Further Reading
 
@@ -34,12 +37,13 @@ Please [read documentation](https://go.oxyrealm.com/documentation) on Aether web
 
 For more information, see [Releases](https://go.oxyrealm.com/changelog).
 
-= 1.1.2 =
+= 1.1.3 =
 
 Release Date:
 
 * Require Sodium PHP Extension enabled
 * Added Depedencies: Oxyrealm\Aether\Utils\Http
+* Updated Depedencies: Oxyrealm\Aether\Utils\Notice
 
 = 1.1.1 =
 
