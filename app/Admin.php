@@ -76,19 +76,19 @@ class Admin {
 		?>
 
         <h3>What is the Aether plugin?</h3>
-        <p>The backbone and framework for all <a href="https://oxyrealm.com">OxyRealm</a>'s plugins. Aether plugin
-            contains all dependencies used by OxyRealm's plugins, mean the plugins will be lean and more manageable to
+        <p>The backbone and framework for all <a href="https://oxyrealm.com">dPlugins</a>'s plugins. Aether plugin
+            contains all dependencies used by dPlugins's plugins, mean the plugins will be lean and more manageable to
             maintenance for us..</p>
 
-        <h3>Why the Aether plugin installed when I was using OxyRealm's plugin?</h3>
-        <p>OxyRealm's plugin will automatically download and activate the plugin from <a
+        <h3>Why the Aether plugin installed when I was using dPlugins's plugin?</h3>
+        <p>dPlugins's plugin will automatically download and activate the plugin from <a
                     href="https://wordpress.org/plugins/aether">https://wordpress.org/plugins/aether</a>. Once the
-            Aether plugin is activated, OxyRealm's plugin will be able to run.</p>
+            Aether plugin is activated, dPlugins's plugin will be able to run.</p>
 
         <h3>Can I deactivated and deleted the Aether plugin?</h3>
-        <p>Please don't deactivate and delete the Aether plugin. All active OxyRealm's plugin will fall and crash.</p>
+        <p>Please don't deactivate and delete the Aether plugin. All active dPlugins's plugin will fall and crash.</p>
 
-        <h3>I enjoy and want to support OxyRealm's free plugins!</h3>
+        <h3>I enjoy and want to support dPlugins's free plugins!</h3>
         <p>Thank you, we appreciate your support. You can use this link to support and buy the coffee for the developer
             <a href="https://go.oxyrealm.com/donate">https://go.oxyrealm.com/donate</a>.</p>
 

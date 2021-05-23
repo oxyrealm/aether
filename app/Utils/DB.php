@@ -49,8 +49,8 @@ class DB {
 
 		self::$medoo = new Medoo( [
 			'type'     => 'mysql',
-			'name'     => self::$wpdb->dbname,
 			'host'     => self::$wpdb->dbhost,
+			'database' => self::$wpdb->dbname,
 			'username' => self::$wpdb->dbuser,
 			'password' => self::$wpdb->dbpassword,
 			'prefix'   => self::$wpdb->prefix,
