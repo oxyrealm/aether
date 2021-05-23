@@ -1,10 +1,10 @@
 === Aether ===
-Contributors: oxyrealm
+Contributors: dPlugins
 Donate link: https://go.oxyrealm.com/donate
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,23 +22,30 @@ The framework for all OxyRealm's plugin
 
 For more info about The framework for OxyRealm's plugins, check out the following:
 
-* The [Aether](https://oxyrealm.com/aether?utm_source=aether) official homepage.
+* The [Aether](https://go.oxyrealm.com/aether) official homepage.
 
 
 == Installation ==
 
-Please [read documentation](https://oxyrealm.com/documentation?utm_source=aether) on Aether website for instruction how to install Aether plugin. 
+Please [read documentation](https://go.oxyrealm.com/documentation) on Aether website for instruction how to install Aether plugin. 
 
 
 == Changelog ==
 
-For more information, see [Releases](https://oxyrealm.com/changelog?utm_source=aether).
+For more information, see [Releases](https://go.oxyrealm.com/changelog).
+
+= 1.1.2 =
+
+Release Date:
+
+* Require Sodium PHP Extension enabled
+* Added Depedencies: Oxyrealm\Aether\Utils\Http
 
 = 1.1.1 =
 
-Release Date: 
+Release Date: May 18th, 2021
 
-* Added an admin page.
+* Added an admin page
 
 = 1.0.9 =
 

@@ -1,16 +1,9 @@
 {
     "name": "oxyrealm/aether",
-    "authors": [
-        {
-            "name": "oxyrealm",
-            "email": "hello@oxyrealm.com"
-        }
-    ],
-    "type": "project",
     "require": {
         "php": "^7.4|^8.0",
-        "catfan/medoo": "^1.7",
-        "pusher/pusher-php-server": "^6.1"
+        "catfan/medoo": "^2.0",
+        "pusher/pusher-php-server": "^7.0"
     },
     "autoload": {
         "psr-4": {
@@ -19,14 +12,5 @@
         "classmap": [
             "database/migrations/"
         ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
     }
 }

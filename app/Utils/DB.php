@@ -38,53 +38,53 @@ use wpdb;
  * @see \Medoo\Medoo
  */
 class DB {
-    private static $instances = [];
+	private static $instances = [];
 
-    private static $medoo;
+	private static $medoo;
 
-    private static $wpdb;
+	private static $wpdb;
 
-    protected function __construct() {
-        self::$wpdb = self::wpdb();
+	protected function __construct() {
+		self::$wpdb = self::wpdb();
 
-        self::$medoo = new Medoo( [
-            'database_type' => 'mysql',
-            'database_name' => self::$wpdb->dbname,
-            'server'        => self::$wpdb->dbhost,
-            'username'      => self::$wpdb->dbuser,
-            'password'      => self::$wpdb->dbpassword,
-            'prefix'        => self::$wpdb->prefix,
-        ] );
-    }
+		self::$medoo = new Medoo( [
+			'type'     => 'mysql',
+			'name'     => self::$wpdb->dbname,
+			'host'     => self::$wpdb->dbhost,
+			'username' => self::$wpdb->dbuser,
+			'password' => self::$wpdb->dbpassword,
+			'prefix'   => self::$wpdb->prefix,
+		] );
+	}
 
-    public static function getInstance(): DB {
-        $cls = static::class;
-        if ( ! isset( self::$instances[ $cls ] ) ) {
-            self::$instances[ $cls ] = new static();
-        }
+	public static function getInstance(): DB {
+		$cls = static::class;
+		if ( ! isset( self::$instances[ $cls ] ) ) {
+			self::$instances[ $cls ] = new static();
+		}
 
-        return self::$instances[ $cls ];
-    }
+		return self::$instances[ $cls ];
+	}
 
-    public static function __callStatic( string $method, array $args ) {
-        return self::getInstance()::$medoo->{$method}( ...$args );
-    }
+	public static function __callStatic( string $method, array $args ) {
+		return self::getInstance()::$medoo->{$method}( ...$args );
+	}
 
-    public function __get( string $name ) {
-        return self::getInstance()::$medoo->{$name};
-    }
+	public function __get( string $name ) {
+		return self::getInstance()::$medoo->{$name};
+	}
 
-    public function __wakeup() {
-        throw new Exception( "Cannot unserialize a singleton." );
-    }
+	public function __wakeup() {
+		throw new Exception( "Cannot unserialize a singleton." );
+	}
 
-    protected function __clone() {
-    }
+	protected function __clone() {
+	}
 
-    public static function wpdb(): wpdb {
-        /** @var wpdb $wpdb */
-        global $wpdb;
+	public static function wpdb(): wpdb {
+		/** @var wpdb $wpdb */
+		global $wpdb;
 
-        return $wpdb;
-    }
+		return $wpdb;
+	}
 }
