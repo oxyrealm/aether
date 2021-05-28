@@ -4,7 +4,7 @@ Donate link: https://go.oxyrealm.com/donate
 Tags: oxygen builder
 Requires at least: 5.6
 Tested up to: 5.7.2
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,6 +34,12 @@ Please [read documentation](https://go.oxyrealm.com/documentation) on Aether web
 == Changelog ==
 
 For more information, see [Releases](https://go.oxyrealm.com/changelog).
+
+= 1.1.6 =
+
+Release Date:
+
+* [Composer] Updated Depedencies: pusher/pusher-php-server
 
 = 1.1.5 =
 
