@@ -3,11 +3,11 @@
       "title": "From the creator of this plugin",
       "products": [
         {
-          "name": "Sandbox",
-          "description": "Any change you made to oxygen design will isolated until you published it.",
-          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-sandbox.png",
-          "buttonText": "Get Sandbox",
-          "buttonLink": "https://wordpress.org/plugins/oxyrealm-sandbox"
+          "name": "Oxyrealm - an Oxygen Builder Forum",
+          "description": "A realm of Oxygen Builder community. The most crowded place to discuss all about Oxygen Builder and WordPress.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm.png",
+          "buttonText": "Join OxyRealm forum",
+          "buttonLink": "https://go.oxyrealm.com/oxyrealm"
         },
         {
           "name": "Collaboration",
@@ -15,6 +15,13 @@
           "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-collaboration.png",
           "buttonText": "Get Collaboration",
           "buttonLink": "https://go.oxyrealm.com/dplugins-collaboration"
+        },
+        {
+          "name": "Sandbox",
+          "description": "Any change you made to oxygen design will isolated until you published it.",
+          "picture": "https://raw.githubusercontent.com/oxyrealm/aether/another/.wordpress-org/oxyrealm-sandbox.png",
+          "buttonText": "Get Sandbox",
+          "buttonLink": "https://wordpress.org/plugins/oxyrealm-sandbox"
         },
         {
           "name": "Asura",
