@@ -45,7 +45,7 @@ class Admin {
 	}
 
 	public function plugin_page(): void {
-		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'main';
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'faq';
 		?>
         <h2>Aether Dashboard</h2>
         <h2 class="nav-tab-wrapper">
@@ -62,12 +62,12 @@ class Admin {
         </h2>
 		<?php
 		switch ( $active_tab ) {
-			case 'faq':
-				$this->faq_tab();
-				break;
 			case 'main':
-			default:
 				echo '<div id="aether-main"></div>';
+				break;
+			case 'faq':
+			default:
+				$this->faq_tab();
 				break;
 		}
 	}
@@ -77,16 +77,19 @@ class Admin {
 
         <h3>What is the Aether plugin?</h3>
         <p>The backbone and framework for all <a href="https://oxyrealm.com">dPlugins</a>'s plugins. Aether plugin
-            contains all dependencies used by dPlugins's plugins, mean the plugins will be lean and more manageable to
-            maintenance for us..</p>
+            contains all dependencies used by our other plugins, mean our other plugins will be lean and more manageable to
+            maintenance.</p>
 
         <h3>Why the Aether plugin installed when I was using dPlugins's plugin?</h3>
         <p>dPlugins's plugin will automatically download and activate the plugin from <a
-                    href="https://wordpress.org/plugins/aether">https://wordpress.org/plugins/aether</a>. Once the
+			href="https://wordpress.org/plugins/aether">https://wordpress.org/plugins/aether</a>. Once the
             Aether plugin is activated, dPlugins's plugin will be able to run.</p>
 
         <h3>Can I deactivated and deleted the Aether plugin?</h3>
-        <p>Please don't deactivate and delete the Aether plugin. All active dPlugins's plugin will fall and crash.</p>
+        <p>We are advising to don't deactivate and delete the Aether plugin. 
+			All our other active plugins heavily rely on the Aether plugin.
+			Deactivating the Aether plugin can result in error and crash on all 
+			our other active plugins.</p>
 
         <h3>I enjoy and want to support All our free plugins!</h3>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donation">
@@ -112,7 +115,7 @@ class Admin {
 						<input type="hidden" name="buyer_credit_shipping_method" value="" />
 						<input type="hidden" name="buyer_credit_user_address_change" value="" />
 						<input type="hidden" name="no_shipping" value="1" />
-						<input type="hidden" name="return" value="<?php echo add_query_arg( [ 'page' => AetherAdmin::$slug, 'tab'  => 'main', ], admin_url( 'admin.php' ) ); ?>" />
+						<input type="hidden" name="return" value="<?php echo add_query_arg( [ 'page' => self::$slug, 'tab'  => 'main', ], admin_url( 'admin.php' ) ); ?>" />
 						<input type="hidden" name="no_note" value="1" />
 						<input type="hidden" name="currency_code" value="USD" />
 						<input type="hidden" name="tax" value="0" />
