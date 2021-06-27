@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:         Aether
  * Description:         The backbone and framework for all dPlugins's plugins.
- * Version:             1.1.8
+ * Version:             1.1.10
  * Author:              dPlugins
  * Author URI:          https://dplugins.com
  * Requires at least:   5.6
@@ -19,12 +19,12 @@
  * @link                https://oxyrealm.com
  * @since               1.0.0
  * @copyright           2021 oxyrealm
- * @version             1.1.8
+ * @version             1.1.10
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AETHER_VERSION', '1.1.8' );
+define( 'AETHER_VERSION', '1.1.10' );
 define( 'AETHER_DB_VERSION', '001' );
 define( 'AETHER_FILE', __FILE__ );
 define( 'AETHER_PATH', dirname( AETHER_FILE ) );

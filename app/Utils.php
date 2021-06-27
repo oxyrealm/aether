@@ -42,7 +42,7 @@ class Utils {
 	public static function plugin_action_links( $links, $setting_page_slug ) {
 		$plugin_shortcuts = [
 			'<a href="' . add_query_arg( [ 'page' => $setting_page_slug ], admin_url( 'admin.php' ) ) . '">Settings</a>',
-			'<a href="https://go.oxyrealm.com/donate" target="_blank" style="color:#3db634;">Buy me a coffee ☕</a>'
+			// '<a href="https://go.oxyrealm.com/donate" target="_blank" style="color:#3db634;">Buy me a coffee ☕</a>'
 		];
 
 		return array_merge( $links, $plugin_shortcuts );
