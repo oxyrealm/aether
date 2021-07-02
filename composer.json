@@ -3,7 +3,8 @@
     "require": {
         "php": "^7.4|^8.0",
         "catfan/medoo": "^2.0",
-        "composer/semver": "^3.2"
+        "composer/semver": "^3.2",
+        "guzzlehttp/guzzle": "^7.3"
     },
     "autoload": {
         "psr-4": {
