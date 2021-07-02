@@ -3,8 +3,6 @@
     "require": {
         "php": "^7.4|^8.0",
         "catfan/medoo": "^2.0",
-        "pusher/pusher-php-server": "^7.0",
-        "paragonie/sodium_compat": "1.15.4",
         "composer/semver": "^3.2"
     },
     "autoload": {
