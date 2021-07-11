@@ -5,16 +5,7 @@ namespace Oxyrealm\Aether\Utils;
 use Exception;
 use Oxyrealm\Aether\Libs\Transient as LibsTransient;
 
-
 /**
- * @method static bool|array select( mixed $table, mixed $join, mixed $columns = null, mixed $where = null )
- * @method static PDOStatement|bool insert( mixed $table, mixed $datas )
- * @method static PDOStatement|bool update( mixed $table, mixed $data, mixed $where = null )
- * @method static PDOStatement|bool delete( mixed $table, mixed $where )
- * @method static PDOStatement|bool replace( mixed $table, mixed $columns, mixed $where = null )
- * @method static mixed get( mixed $table, mixed $join = null, mixed $columns = null, mixed $where = null )
- * @method static bool has( mixed $table, mixed $join, mixed $where = null )
- * 
  * @method static bool has( string $key )
  * @method static bool delete( string $key )
  * @method static mixed|false get( string $key, mixed $default = null )

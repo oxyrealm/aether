@@ -18,11 +18,9 @@ class Transient
 		return get_transient($this->module_name . $key) !== false ? true : false;
 	}
 
-	public function get($key, $default = null)
+	public function get($key, $default = false)
 	{
-		$result = get_transient($this->module_name . $key);
-
-		return $result !== false ? $result : $default;
+		return get_transient($this->module_name . $key, $default);
 	}
 
 	public function set($key, $value = null, $ttl = 0)

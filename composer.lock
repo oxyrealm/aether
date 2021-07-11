@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "catfan/medoo",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "c69c054cf8fe64223fea7d9b7d0ab182e2c134ea"
+                "reference": "dbf65e46813f7f4f63940c1fd8ff6d4091449d5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/c69c054cf8fe64223fea7d9b7d0ab182e2c134ea",
-                "reference": "c69c054cf8fe64223fea7d9b7d0ab182e2c134ea",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/dbf65e46813f7f4f63940c1fd8ff6d4091449d5d",
+                "reference": "dbf65e46813f7f4f63940c1fd8ff6d4091449d5d",
                 "shasum": ""
             },
             "require": {
@@ -76,7 +76,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-06-07T01:40:50+00:00"
+            "time": "2021-07-09T05:26:24+00:00"
         },
         {
             "name": "composer/semver",
