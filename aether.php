@@ -9,7 +9,7 @@
  * Author:              dPlugins
  * Author URI:          https://dplugins.com
  * Requires at least:   5.6
- * Tested up to:        5.7.2
+ * Tested up to:        5.8
  * Requires PHP:        7.4
  * Text Domain:         aether
  * Domain Path:         /languages
